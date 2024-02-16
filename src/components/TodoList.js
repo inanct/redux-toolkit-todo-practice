@@ -1,21 +1,16 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { removeTodo, selectedTodo } from '../redux/todoSlice'; // Redux'tan gerekli eylemleri ve slice'ı içe aktarır
+// TodoList.js
+
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeTodo } from '../redux/todoSlice'; // todoSlice'dan removeTodo eylemini al
 
 const TodoList = () => {
-    // Redux store'undan todo listesini alır
-    const todoList = useSelector(state => state.todos.todoList);
-    const dispatch = useDispatch(); // Redux'ta bir eylemi tetiklemek için dispatch fonksiyonunu alır
+    const todoList = useSelector(state => state.todos.todoList); // Redux store'dan todo listesini al
+    const dispatch = useDispatch(); // useDispatch kancasıyla dispatch fonksiyonunu al
 
-    // Bir todo öğesini seçmek için kullanılan işlev
-    const handleSelectTodo = (todo) => {
-        // Redux store'una seçilen todo öğesini güncellemek için selectedTodo eylemini tetikler
-        dispatch(selectedTodo(todo));
-    };
-
-    // Bir todo öğesini silmek için kullanılan işlev
+    // Todo kaldırmak için bir işlev tanımla
     const handleRemoveTodo = (todo) => {
-        // Redux store'undan todo öğesini kaldırmak için removeTodo eylemini tetikler
+        // Redux store'a removeTodo eylemini gönder
         dispatch(removeTodo(todo));
     };
 
@@ -23,17 +18,18 @@ const TodoList = () => {
         <div>
             <h2>ToDo List</h2>
             <ul>
-                {/* Todo listesini döngüye alır ve her bir todo öğesini listeler */}
+                {/* todoList üzerinde döngü yap ve her bir todo öğesi için bir <li> öğesi oluştur */}
                 {todoList.map(todo => (
-                    <li key={todo} onClick={() => handleSelectTodo(todo)}> {/* Bir todo öğesi tıklanırsa, handleSelectTodo işlevi çağrılır */}
+                    <li key={todo}>
+                        {/* Her bir todo öğesini ekrana yazdır */}
                         {todo}
-                        {/* Remove butonuna tıklandığında, handleRemoveTodo işlevi çağrılır ve todo öğesi Redux store'undan kaldırılır */}
-                        <button className='border-4 rounded-md ml-10 bg-black' onClick={(e) => { e.stopPropagation(); handleRemoveTodo(todo); }}>Remove</button>
+                        {/* Todo öğesini kaldırmak için bir buton ekle */}
+                        <button className='border-4 rounded-md ml-10 bg-black text-white' onClick={() => handleRemoveTodo(todo)}>Remove</button>
                     </li>
                 ))}
             </ul>
         </div>
     );
-}
+};
 
-export default TodoList; // TodoList bileşenini dışa aktarır
+export default TodoList;

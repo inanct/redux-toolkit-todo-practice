@@ -1,0 +1,6 @@
+.selected {
+    text-decoration: line-through;
+    /* Seçilen öğenin üstü çizili olacak */
+    color: #888;
+    /* Seçilen öğenin rengi gri olacak */
+}
