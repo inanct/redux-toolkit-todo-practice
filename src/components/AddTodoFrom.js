@@ -24,9 +24,9 @@ const AddTodoFrom = () => {
     return (
         <div>
             {/* Kullanıcıdan todo girişini alacak bir input alanı */}
-            <input placeholder='Write ToDo' type="text" value={newTodo} onChange={handleInputChange}/>
+            <input className='p-2 rounded-md' placeholder='Write ToDo' type="text" value={newTodo} onChange={handleInputChange}/>
             {/* Todo eklemek için bir buton */}
-            <button onClick={handleAddTodo}>Add Todo</button>
+            <button className='border rounded-md ml-2 p-2' onClick={handleAddTodo}>Add Todo</button>
         </div>
     );
 };

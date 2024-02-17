@@ -16,7 +16,7 @@ const TodoList = () => {
 
     return (
         <div>
-            <h2>ToDo List</h2>
+            <h2 className='border rounded-md p-2 mr-2'>ToDo List</h2>
             <ul>
                 {/* todoList üzerinde döngü yap ve her bir todo öğesi için bir <li> öğesi oluştur */}
                 {todoList.map(todo => (

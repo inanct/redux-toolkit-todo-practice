@@ -4,9 +4,12 @@ import AddTodoFrom from '../AddTodoFrom'
 
 const Home = () => {
   return (
-    <div>
-        <TodoList/>
+    <div className='h-screen container flex justify-center items-center '>
+      
+      <TodoList/>
         <AddTodoFrom/>
+     
+        
     </div>
   )
 }
